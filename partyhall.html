@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Hall – The Grand Palate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--gold-light:#e8d5a3;--black:#0a0a0a;--dark:#111;--card:#161616;--border:#2a2a2a;--text:#ccc;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:white;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;width:100%;z-index:999;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;}
+.nav-links{display:flex;gap:35px;list-style:none;}
+.nav-links a{font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);transition:.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.hero{padding:180px 8% 120px;background:linear-gradient(rgba(10,10,10,0.75),rgba(10,10,10,0.85)),url('https://images.unsplash.com/photo-1528642474497-08877f8f1f70?w=1500') center/cover no-repeat;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:3.8rem;line-height:1.05;margin-bottom:18px;}
+.hero p{max-width:660px;color:var(--text);line-height:1.8;font-size:0.95rem;}
+.page-content{padding:80px 8% 60px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;}
+.highlight{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);padding:36px;}
+.highlight h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:18px;color:white;}
+.highlight p{color:var(--text);line-height:1.8;font-size:0.95rem;}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+.feature{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);padding:26px;}
+.feature h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:12px;}
+.feature p{color:var(--text);line-height:1.8;font-size:0.95rem;}
+.ballot{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);padding:38px;}
+.ballot h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:18px;color:white;}
+.ballot p{color:var(--text);line-height:1.8;font-size:0.95rem;margin-bottom:24px;}
+.package{margin-bottom:24px;}
+.package h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);margin-bottom:10px;}
+.package p{color:var(--text);line-height:1.8;font-size:0.95rem;}
+.btn-gold{padding:16px 34px;background:var(--gold);color:var(--black);font-family:'Jost',sans-serif;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:.3s;}
+.btn-gold:hover{background:var(--gold-light);}
+.footer{background:#050505;padding:40px 8%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+.footer .logo{font-size:1.3rem;color:var(--gold);}
+.footer p{color:#555;font-size:0.85rem;}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-links a{color:#555;transition:.3s;}
+.footer-links a:hover{color:var(--gold);}
+@media(max-width:1000px){.page-content{grid-template-columns:1fr;}} 
+@media(max-width:650px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">The Grand Palate</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="reservation.html">Reservations</a></li>
+    <li><a href="partyhall.html" class="active">Party Hall</a></li>
+    <li><a href="lounge.html">Lounge</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<header class="hero">
+  <h1>Host your celebration in our luxury party hall.</h1>
+  <p>From weddings to corporate events, we provide elegant spaces, bespoke menus, and attentive planning so your event becomes a cherished memory.</p>
+</header>
+<section class="page-content">
+  <div>
+    <div class="highlight">
+      <h2>Event spaces tailored for every occasion</h2>
+      <p>Our party hall offers an opulent setting, premium décor, full audiovisual support, and dedicated event coordination for up to 200 guests.</p>
+      <p>Choose from customizable seating plans, themed decor packages, and menu options designed to impress every attendee.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h4>Weddings & Receptions</h4>
+        <p>Grand floral displays, multi-course dining, and an intimate ambience for unforgettable ceremonies.</p>
+      </div>
+      <div class="feature">
+        <h4>Corporate Events</h4>
+        <p>Boardroom-style presentations, networking receptions, and refined hospitality for business gatherings.</p>
+      </div>
+      <div class="feature">
+        <h4>Private Celebrations</h4>
+        <p>Birthdays, anniversaries and festivity packages with tailored menus and personalized service.</p>
+      </div>
+      <div class="feature">
+        <h4>Live Entertainment</h4>
+        <p>Stage setup, sound support, and curated entertainment options to elevate every celebration.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ballot">
+    <h3>Event packages</h3>
+    <div class="package">
+      <h4>Signature Reception</h4>
+      <p>Includes full venue hire, premium buffet menu, welcome drinks, event manager, and floral décor.</p>
+    </div>
+    <div class="package">
+      <h4>Executive Gala</h4>
+      <p>A raised stage, presentation equipment, plated menu service, and premium bar selections.</p>
+    </div>
+    <div class="package">
+      <h4>Celebration Package</h4>
+      <p>Custom cake service, themed décor, live performer coordination and dedicated seating arrangements.</p>
+    </div>
+    <p>For a personalised estimate, contact our events team with your guest count, date and theme.</p>
+    <button class="btn-gold">Book Event Consultation</button>
+  </div>
+</section>
+<footer class="footer">
+  <span class="logo">The Grand Palate</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="partyhall.html">Party Hall</a>
+    <a href="lounge.html">Lounge</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2024 The Grand Palate. All rights reserved.</p>
+</footer>
+</body>
+</html>
