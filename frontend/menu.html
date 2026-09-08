@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu – The Grand Palate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--gold-light:#e8d5a3;--black:#0a0a0a;--dark:#111;--card:#161616;--border:#2a2a2a;--text:#ccc;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:white;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;width:100%;z-index:999;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;}
+.nav-links{display:flex;gap:35px;list-style:none;}
+.nav-links a{font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);transition:.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+
+/* PAGE HEADER */
+.page-header{padding:160px 8% 70px;background:linear-gradient(rgba(10,10,10,0.7),var(--black)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400') center/cover;}
+.section-label{display:block;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:4rem;color:white;}
+.page-header p{color:var(--text);font-size:0.95rem;margin-top:14px;max-width:500px;line-height:1.7;}
+
+/* FILTER TABS */
+.filter-bar{display:flex;gap:0;overflow-x:auto;border-bottom:1px solid var(--border);padding:0 8%;background:var(--dark);}
+.filter-tab{padding:18px 28px;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--text);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.3s;}
+.filter-tab:hover,.filter-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* MENU SECTION */
+.menu-section{padding:70px 8%;}
+.cuisine-block{margin-bottom:80px;display:none;}
+.cuisine-block.active{display:block;}
+.cuisine-block h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:white;margin-bottom:6px;}
+.cuisine-block .sub{color:var(--text);font-size:0.85rem;letter-spacing:1px;margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+
+.category-label{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;margin-top:40px;display:block;}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
+.menu-item{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:20px;transition:.3s;}
+.menu-item:hover{background:rgba(201,168,76,0.04);}
+.menu-item:nth-child(odd){border-right:1px solid var(--border);}
+.item-info h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:white;margin-bottom:5px;}
+.item-info p{font-size:0.8rem;color:var(--text);line-height:1.6;}
+.item-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.tag{font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;padding:3px 7px;border-radius:2px;}
+.tag-veg{background:rgba(80,180,80,0.15);color:#6dba6d;border:1px solid rgba(80,180,80,0.3);}
+.tag-nonveg{background:rgba(220,80,80,0.12);color:#d97575;border:1px solid rgba(220,80,80,0.25);}
+.tag-chef{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid rgba(201,168,76,0.3);}
+.item-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);white-space:nowrap;}
+
+.btn-gold{padding:14px 36px;background:var(--gold);color:var(--black);font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:.3s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);}
+
+footer{background:#050505;padding:40px 8%;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+footer .logo{font-size:1.3rem;}
+footer p{font-size:0.8rem;color:#555;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:0.8rem;color:#555;transition:.3s;}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:750px){
+  .menu-grid{grid-template-columns:1fr;}
+  .menu-item:nth-child(odd){border-right:none;}
+  .page-header h1{font-size:2.5rem;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">The Grand Palate</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="reservation.html">Reservations</a></li>
+    <li><a href="partyhall.html">Party Hall</a></li>
+    <li><a href="lounge.html">Lounge</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <span class="section-label">Curated Dining</span>
+  <h1>Our Menu</h1>
+  <p>Every dish crafted from premium ingredients by chefs trained in the culinary traditions of four continents.</p>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-tab active" onclick="showCuisine('indian',this)">Indian</div>
+  <div class="filter-tab" onclick="showCuisine('italian',this)">Italian</div>
+  <div class="filter-tab" onclick="showCuisine('chinese',this)">Chinese</div>
+  <div class="filter-tab" onclick="showCuisine('mexican',this)">Mexican</div>
+  <div class="filter-tab" onclick="showCuisine('beverages',this)">Beverages</div>
+  <div class="filter-tab" onclick="showCuisine('desserts',this)">Desserts</div>
+</div>
+
+<div class="menu-section">
+
+  <!-- INDIAN -->
+  <div class="cuisine-block active" id="indian">
+    <h2>Indian Cuisine</h2>
+    <p class="sub">From the tandoors of Punjab to the spice coasts of Kerala — an authentic Indian journey.</p>
+
+    <span class="category-label">Starters</span>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Tandoori Platter</h4>
+          <p>Assorted tandoor-grilled paneer, mushroom, and seekh kebab with mint chutney</p>
+          <div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Chef's Pick</span></div>
+        </div>
+        <span class="item-price">₹520</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Gilafi Seekh Kebab</h4>
+          <p>Spiced minced lamb wrapped in herbs, grilled over charcoal</p>
+          <div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div>
+        </div>
+        <span class="item-price">₹480</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Crispy Aloo Tikki</h4>
+          <p>Golden potato patties with spiced filling, tamarind & yogurt drizzle</p>
+          <div class="item-tags"><span class="tag tag-veg">Veg</span></div>
+        </div>
+        <span class="item-price">₹290</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Malai Chicken Tikka</h4>
+          <p>Cream-marinated chicken thighs smoked in the tandoor, served with roomali</p>
+          <div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Chef's Pick</span></div>
+        </div>
+        <span class="item-price">₹440</span>
+      </div>
+    </div>
+
+    <span class="category-label">Main Course</span>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Dum Biryani (Hyderabadi)</h4>
+          <p>Long-grain Basmati, slow-cooked with caramelised onions, saffron and whole spices</p>
+          <div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Signature</span></div>
+        </div>
+        <span class="item-price">₹540</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Rogan Josh</h4>
+          <p>Slow-braised Kashmiri lamb in aromatic spice-infused gravy</p>
+          <div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div>
+        </div>
+        <span class="item-price">₹620</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Dal Makhani</h4>
+          <p>Black lentils simmered overnight with butter and cream</p>
+          <div class="item-tags"><span class="tag tag-veg">Veg</span></div>
+        </div>
+        <span class="item-price">₹320</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Butter Chicken</h4>
+          <p>Tender chicken in a silky tomato-cream makhani sauce</p>
+          <div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Bestseller</span></div>
+        </div>
+        <span class="item-price">₹490</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Paneer Makhani</h4>
+          <p>Cottage cheese cubes in a rich, spiced tomato-cream sauce</p>
+          <div class="item-tags"><span class="tag tag-veg">Veg</span></div>
+        </div>
+        <span class="item-price">₹390</span>
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h4>Kerala Fish Curry</h4>
+          <p>Coastal-style fish in a tangy coconut-turmeric gravy with raw mango</p>
+          <div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div>
+        </div>
+        <span class="item-price">₹560</span>
+      </div>
+    </div>
+
+    <span class="category-label">Breads</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Garlic Naan</h4><p>Leavened bread topped with garlic butter, baked in tandoor</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹80</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Laccha Paratha</h4><p>Layered whole wheat flatbread, crisp and flaky</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+
+  <!-- ITALIAN -->
+  <div class="cuisine-block" id="italian">
+    <h2>Italian Cuisine</h2>
+    <p class="sub">Handmade pasta, imported cheeses, and the true spirit of la cucina italiana.</p>
+
+    <span class="category-label">Antipasti</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Bruschetta al Pomodoro</h4><p>Toasted sourdough, heirloom tomatoes, fresh basil and extra-virgin olive oil</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹340</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Burrata & Prosciutto</h4><p>Creamy burrata with thinly sliced prosciutto, rocket and honey</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Chef's Pick</span></div></div><span class="item-price">₹580</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Arancini</h4><p>Saffron risotto balls, golden-fried, filled with mozzarella</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹320</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Calamari Fritti</h4><p>Crispy fried squid rings with lemon aioli and marinara</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹420</span></div>
+    </div>
+
+    <span class="category-label">Pasta & Risotto</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Cacio e Pepe</h4><p>Spaghetti with Pecorino Romano, black pepper and pasta water emulsion</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Signature</span></div></div><span class="item-price">₹490</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Tagliatelle al Ragù</h4><p>Fresh egg pasta with slow-cooked Bolognese meat sauce</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹560</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Porcini Mushroom Risotto</h4><p>Arborio rice, wild porcini, truffle oil, aged Parmesan</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Chef's Pick</span></div></div><span class="item-price">₹620</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Lobster Linguine</h4><p>Fresh linguine with butter-poached lobster, cherry tomatoes, white wine</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹890</span></div>
+    </div>
+
+    <span class="category-label">Pizza</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Margherita DOP</h4><p>San Marzano tomato, fior di latte mozzarella, fresh basil, wood-fired</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹440</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Diavola</h4><p>Spicy salami, nduja, mozzarella and chilli oil on a crisp base</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹520</span></div>
+    </div>
+  </div>
+
+  <!-- CHINESE -->
+  <div class="cuisine-block" id="chinese">
+    <h2>Chinese Cuisine</h2>
+    <p class="sub">Authentic flavours from Cantonese dim sum kitchens to Sichuan wok masters.</p>
+
+    <span class="category-label">Dim Sum</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Har Gow (Steamed Prawn)</h4><p>Delicate rice-flour dumplings filled with whole prawns, served in bamboo steamer</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Signature</span></div></div><span class="item-price">₹380</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Vegetable Crystal Dumpling</h4><p>Translucent wrappers filled with water chestnut, bamboo shoots, carrot</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹300</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Chicken Sui Mai</h4><p>Open-top dumplings with minced chicken, shiitake, goji berry garnish</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹340</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Char Siu Bao (Baked)</h4><p>Fluffy baked buns filled with sweet barbecue pork</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Bestseller</span></div></div><span class="item-price">₹360</span></div>
+    </div>
+
+    <span class="category-label">Wok Specials</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Kung Pao Chicken</h4><p>Diced chicken, Sichuan chilies, peanuts in a bold sweet-spicy sauce</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹480</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Mapo Tofu</h4><p>Silken tofu in a fiery Sichuan bean-paste sauce with Sichuan pepper</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Chef's Pick</span></div></div><span class="item-price">₹360</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Yang Chow Fried Rice</h4><p>Wok-fried rice with egg, shrimp, char siu pork and spring onion</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹420</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Honey Chilli Lotus Stem</h4><p>Crispy lotus stems tossed in a sweet-spicy honey glaze</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹340</span></div>
+    </div>
+  </div>
+
+  <!-- MEXICAN -->
+  <div class="cuisine-block" id="mexican">
+    <h2>Mexican Cuisine</h2>
+    <p class="sub">Bold, vibrant, and alive — from street-style tacos to elevated mole sauces.</p>
+
+    <span class="category-label">Small Plates</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Guacamole & Totopos</h4><p>Table-side guacamole, ripe avocado, lime, jalapeño, with tortilla chips</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹320</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Chorizo Quesadilla</h4><p>Flour tortilla, melted Oaxaca cheese, spiced pork chorizo, pico de gallo</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹380</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Elotes (Street Corn)</h4><p>Grilled corn on the cob, cotija cheese, chilli powder, lime crema</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Chef's Pick</span></div></div><span class="item-price">₹260</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Tuna Tostada</h4><p>Crispy tostada topped with spiced tuna tartare, avocado, habanero</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹440</span></div>
+    </div>
+
+    <span class="category-label">Mains</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Birria Tacos</h4><p>Slow-braised beef cheek in consommé, served with dipping broth</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span><span class="tag tag-chef">Signature</span></div></div><span class="item-price">₹520</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Mole Negro Enchiladas</h4><p>Corn tortillas in a complex 30-ingredient mole negro, topped with chicken</p><div class="item-tags"><span class="tag tag-nonveg">Non-Veg</span></div></div><span class="item-price">₹560</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Fajitas Veracruz</h4><p>Sizzling bell peppers, onions, paneer or chicken, with sides</p><div class="item-tags"><span class="tag tag-veg">Veg / Non-Veg</span></div></div><span class="item-price">₹480</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Burrito Bowl</h4><p>Cilantro rice, black beans, pico, sour cream, cheese and your protein choice</p><div class="item-tags"><span class="tag tag-veg">Customisable</span></div></div><span class="item-price">₹420</span></div>
+    </div>
+  </div>
+
+  <!-- BEVERAGES -->
+  <div class="cuisine-block" id="beverages">
+    <h2>Premium Beverages</h2>
+    <p class="sub">From single-origin coffees to handcrafted mocktails — drinks as considered as our food.</p>
+
+    <span class="category-label">Mocktails</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Rose Lychee Spritz</h4><p>Rose syrup, lychee, lime, soda, edible rose garnish</p></div><span class="item-price">₹280</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Mango Jalapeño Lemonade</h4><p>Fresh mango pulp, jalapeño, lemon, black salt, mint</p></div><span class="item-price">₹260</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Smoked Berry Fizz</h4><p>Blueberry, cold-smoked syrup, tonic water, rosemary</p><div class="item-tags"><span class="tag tag-chef">Signature</span></div></div><span class="item-price">₹320</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Coconut Mojito</h4><p>Fresh coconut water, mint, lime, soda</p></div><span class="item-price">₹240</span></div>
+    </div>
+
+    <span class="category-label">Coffee & Tea</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Single-Origin Espresso</h4><p>Ethiopian Yirgacheffe, pulled as a double shot</p></div><span class="item-price">₹180</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Cardamom Latte</h4><p>Espresso with steamed milk, crushed green cardamom</p></div><span class="item-price">₹220</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Darjeeling First Flush</h4><p>Delicate muscatel notes, served in a white porcelain pot</p></div><span class="item-price">₹200</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Kashmiri Kahwa</h4><p>Green tea, saffron, cardamom, rose petals, crushed almonds</p></div><span class="item-price">₹240</span></div>
+    </div>
+  </div>
+
+  <!-- DESSERTS -->
+  <div class="cuisine-block" id="desserts">
+    <h2>Desserts</h2>
+    <p class="sub">A final act worthy of the meal that came before.</p>
+
+    <span class="category-label">Sweets & Pastries</span>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><h4>Gulab Jamun Trio</h4><p>Soft milk-solid dumplings in saffron rose syrup, vanilla ice cream</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Bestseller</span></div></div><span class="item-price">₹280</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Tiramisu</h4><p>Classic Italian layers of espresso-soaked savoiardi and mascarpone cream</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹340</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Dark Chocolate Fondant</h4><p>Warm valrhona 70% chocolate cake with a molten centre, vanilla gelato</p><div class="item-tags"><span class="tag tag-veg">Veg</span><span class="tag tag-chef">Chef's Pick</span></div></div><span class="item-price">₹380</span></div>
+      <div class="menu-item"><div class="item-info"><h4>Churros con Chocolate</h4><p>Golden fried churros with a thick Mexican drinking chocolate dip</p><div class="item-tags"><span class="tag tag-veg">Veg</span></div></div><span class="item-price">₹290</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:40px 0 0;">
+    <a href="reservation.html" class="btn-gold">Reserve Your Table</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="logo">The Grand Palate</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2024 The Grand Palate</p>
+</footer>
+
+<script>
+function showCuisine(id, el){
+  document.querySelectorAll('.cuisine-block').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+<script src="chat-widget.js"></script>
+</body>
+</html>
