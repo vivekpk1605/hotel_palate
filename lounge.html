@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lounge – The Grand Palate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--gold-light:#e8d5a3;--black:#0a0a0a;--dark:#111;--card:#161616;--border:#2a2a2a;--text:#ccc;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:white;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;width:100%;z-index:999;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;}
+.nav-links{display:flex;gap:35px;list-style:none;}
+.nav-links a{font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);transition:.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.hero{padding:180px 8% 120px;background:linear-gradient(rgba(10,10,10,0.75),rgba(10,10,10,0.85)),url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1500') center/cover no-repeat;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:3.8rem;line-height:1.05;margin-bottom:18px;}
+.hero p{max-width:660px;color:var(--text);line-height:1.8;font-size:0.95rem;}
+.lounge-grid{padding:80px 8% 60px;display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+.panel{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);padding:36px;}
+.panel h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:18px;color:white;}
+.panel p{color:var(--text);line-height:1.8;font-size:0.95rem;}
+.panel-list{display:grid;gap:20px;margin-top:30px;}
+.item{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.1);padding:24px;border-radius:12px;}
+.item h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;}
+.item p{color:var(--text);line-height:1.7;font-size:0.95rem;}
+.btn-gold{padding:16px 34px;background:var(--gold);color:var(--black);font-family:'Jost',sans-serif;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:.3s;}
+.btn-gold:hover{background:var(--gold-light);}
+.footer{background:#050505;padding:40px 8%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+.footer .logo{font-size:1.3rem;color:var(--gold);}
+.footer p{color:#555;font-size:0.85rem;}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-links a{color:#555;transition:.3s;}
+.footer-links a:hover{color:var(--gold);}
+@media(max-width:1000px){.lounge-grid{grid-template-columns:1fr;}} 
+@media(max-width:650px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">The Grand Palate</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="reservation.html">Reservations</a></li>
+    <li><a href="partyhall.html">Party Hall</a></li>
+    <li><a href="lounge.html" class="active">Lounge</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<header class="hero">
+  <h1>An intimate lounge for cocktails, conversations and curated nights.</h1>
+  <p>Relax in a refined atmosphere with handcrafted drinks, ambient lighting, and soft live music designed to complement every moment.</p>
+</header>
+<section class="lounge-grid">
+  <div class="panel">
+    <h2>Evening lounge experience</h2>
+    <p>Our lounge blends luxury and comfort with plush seating, premium spirits, and a menu of gourmet bar bites. It is perfect for after-dinner drinks or a spontaneous night out.</p>
+    <div class="panel-list">
+      <div class="item"><h4>Signature Cocktails</h4><p>Discover bespoke cocktails made with premium spirits, exotic infusions, and fresh seasonal ingredients.</p></div>
+      <div class="item"><h4>Small Bites</h4><p>Shareable plates, artisanal cheese, and refined snacks designed to pair with your beverage.</p></div>
+      <div class="item"><h4>Live Sound</h4><p>Enjoy curated live performances with soft jazz, acoustic sets, and lounge beats each evening.</p></div>
+      <div class="item"><h4>Reserved Seating</h4><p>Pre-book a private table or sofa for an elevated night with friends and family.</p></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Plan your evening</h2>
+    <p>Reserve the lounge for a private gathering or simply drop in for a relaxed after-work unwind. Our hosts will assist with seating, menu selection, and any special requests.</p>
+    <button class="btn-gold">Reserve Lounge Seating</button>
+  </div>
+</section>
+<footer class="footer">
+  <span class="logo">The Grand Palate</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="partyhall.html">Party Hall</a>
+    <a href="lounge.html">Lounge</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2024 The Grand Palate. All rights reserved.</p>
+</footer>
+</body>
+</html>
